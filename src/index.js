@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
+import router from './routes/producto.routes'
 
 //instanciar express
 const app = express();
@@ -21,10 +22,5 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'../public')));
 
 //crear rutas
-app.get('/', (req, res)=>{
-    res.send('hola esto es una prueba desde el backend')
-})
-app.delete('/borrarproducto', (req, res)=>{
-    res.send('alguien quiere borrar')
-})
+app.use('/apicafeteria',router);
 
